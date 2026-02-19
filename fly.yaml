@@ -11,6 +11,8 @@ env:
   APP_URL: https://id.alekseev.us
   DB_CONNECTION_STRING: /usr/local/var/data/pocket-id.db
   FILE_BACKEND: s3
+  ANALYTICS_DISABLED: true
+  TRUST_PROXY: true
 
 mounts:
   source: "data"
