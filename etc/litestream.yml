@@ -1,0 +1,9 @@
+# Subcommand to execute
+exec: "/usr/local/bin/pocket-id"
+
+dbs:
+  - path: ${DB_CONNECTION_STRING}
+    replica:
+      type: s3
+      bucket: ${BUCKET_NAME}
+      path:   ${DB_CONNECTION_STRING}

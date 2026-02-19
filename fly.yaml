@@ -1,0 +1,32 @@
+# fly.yaml app configuration file generated for pocket-id-fly on 2026-02-18T21:38:17-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app: pocket-id-fly
+primary_region: iad
+build: {}
+
+env:
+  APP_URL: https://id.alekseev.us
+  DB_CONNECTION_STRING: /usr/local/var/data/pocket-id.db
+  FILE_BACKEND: s3
+
+mounts:
+  source: "data"
+  destination: "/usr/local/var/data"
+
+http_service:
+  internal_port: 1411
+  force_https: true
+  auto_stop_machines: false
+  auto_start_machines: true
+  min_machines_running: 1
+
+  processes:
+    - app
+
+vm:
+  - memory: 256mb
+    cpus: 1
+    memory_mb: 256
