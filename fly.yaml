@@ -15,6 +15,8 @@ env:
   TRUST_PROXY: true
   METRICS_ENABLED: true
   OTEL_METRICS_EXPORTER: prometheus
+  OTEL_EXPORTER_PROMETHEUS_PORT: 9464
+  OTEL_EXPORTER_PROMETHEUS_HOST: 0.0.0.0
 
 mounts:
   source: "data"
@@ -26,9 +28,14 @@ http_service:
   auto_stop_machines: false
   auto_start_machines: true
   min_machines_running: 1
-
   processes:
     - app
+  checks:
+    - grace_period: 10s
+      interval: 5s
+      method: "GET"
+      timeout: 2s
+      path: /healthz
 
 metrics:
   port: 9464
