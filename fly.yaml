@@ -13,10 +13,12 @@ env:
   FILE_BACKEND: s3
   ANALYTICS_DISABLED: true
   TRUST_PROXY: true
+  TRACING_ENABLED: true
   METRICS_ENABLED: true
-  OTEL_METRICS_EXPORTER: prometheus
-  OTEL_EXPORTER_PROMETHEUS_PORT: 9464
-  OTEL_EXPORTER_PROMETHEUS_HOST: 0.0.0.0
+  OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: https://s1754970.eu-fsn-3.betterstackdata.com/v1/metrics
+  OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://s1754970.eu-fsn-3.betterstackdata.com/v1/traces
+  OTEL_EXPORTER_OTLP_LOGS_ENDPOINT: https://s1754970.eu-fsn-3.betterstackdata.com/v1/logs
+  OTEL_EXPORTER_OTLP_COMPRESSION: gzip
 
 mounts:
   source: "data"
@@ -38,7 +40,7 @@ http_service:
       path: /healthz
 
 metrics:
-  port: 9464
+  port: 9090
   path: /metrics
   processes:
     - app

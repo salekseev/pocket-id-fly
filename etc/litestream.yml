@@ -7,3 +7,5 @@ dbs:
       type: s3
       bucket: ${BUCKET_NAME}
       path:   ${DB_CONNECTION_STRING}
+
+addr: ":9090"
