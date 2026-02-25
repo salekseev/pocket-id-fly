@@ -10,7 +10,7 @@ ARG APP_UID=1000 \
 # :: FOREIGN IMAGES
 FROM 11notes/distroless AS distroless
 FROM 11notes/util AS util
-FROM litestream/litestream:0.5.8 AS litestream
+FROM litestream/litestream:0.5.9 AS litestream
 FROM 11notes/pocket-id:2.2.0 AS pocket-id
 
 # :: FILE SYSTEM
