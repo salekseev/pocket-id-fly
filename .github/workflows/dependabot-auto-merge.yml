@@ -4,6 +4,7 @@ on:
   pull_request
 
 permissions:
+  id-token: write
   contents: write
   pull-requests: write
 
@@ -15,6 +16,14 @@ jobs:
       - name: Dependabot metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v2
+
+      - name: Get GitHub App token
+        id: get-token
+        uses: octo-sts/action@f603d3be9d8dd9871a265776e625a27b00effe05 # v1.1.1
+        with:
+          scope: salekseev/pocket-id-fly
+          identity: dependabot-auto-merge
+
       - uses: actions/checkout@v4
 
       - name: Approve a PR if not already approved
@@ -26,10 +35,10 @@ jobs:
           fi
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
 
       - name: Enable auto-merge for patch updates
         if: steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch'
         run: gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
