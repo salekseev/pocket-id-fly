@@ -6,7 +6,7 @@ ARG APP_UID=1000 \
 
 # foreign images
 FROM litestream/litestream:0.5.10 AS litestream
-FROM ghcr.io/pocket-id/pocket-id:v2.4.0-distroless AS pocket-id
+FROM ghcr.io/pocket-id/pocket-id:v2.5.0-distroless AS pocket-id
 
 
 # header
