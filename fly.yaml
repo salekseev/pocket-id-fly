@@ -11,6 +11,7 @@ env:
   APP_URL: https://id.alekseev.us
   DB_CONNECTION_STRING: /usr/local/var/data/pocket-id.db
   FILE_BACKEND: s3
+  S3_FORCE_PATH_STYLE: true
   ANALYTICS_DISABLED: true
   TRUST_PROXY: true
   TRACING_ENABLED: true
