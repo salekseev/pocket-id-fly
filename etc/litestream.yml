@@ -2,7 +2,7 @@
 exec: "/usr/local/bin/pocket-id"
 
 dbs:
-  - path: ${DB_CONNECTION_STRING}
+  - path: litestream${DB_CONNECTION_STRING}
     replica:
       type: s3
       bucket: ${S3_BUCKET}
@@ -13,7 +13,5 @@ dbs:
       secret-access-key: ${S3_SECRET_ACCESS_KEY}
       force-path-style: true
       skip-verify: true
-      sign-payload: false
-      require-content-md5: false
 
 addr: ":9090"
