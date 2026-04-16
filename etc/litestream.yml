@@ -13,5 +13,6 @@ dbs:
       secret-access-key: ${S3_SECRET_ACCESS_KEY}
       force-path-style: true
       skip-verify: true
+      sign-payload: false
 
 addr: ":9090"
