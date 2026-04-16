@@ -2,11 +2,11 @@
 exec: "/usr/local/bin/pocket-id"
 
 dbs:
-  - path: litestream${DB_CONNECTION_STRING}
+  - path: ${DB_CONNECTION_STRING}
     replica:
       type: s3
       bucket: ${S3_BUCKET}
-      path: ${DB_CONNECTION_STRING}
+      path: litestream${DB_CONNECTION_STRING}
       endpoint: ${S3_ENDPOINT}
       region: ${S3_REGION}
       access-key-id: ${S3_ACCESS_KEY_ID}
