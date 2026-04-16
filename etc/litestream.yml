@@ -7,5 +7,6 @@ dbs:
       type: s3
       bucket: ${BUCKET_NAME}
       path:   ${DB_CONNECTION_STRING}
+      force-path-style: true
 
 addr: ":9090"
