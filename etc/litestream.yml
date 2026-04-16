@@ -5,8 +5,12 @@ dbs:
   - path: ${DB_CONNECTION_STRING}
     replica:
       type: s3
-      bucket: ${BUCKET_NAME}
-      path:   ${DB_CONNECTION_STRING}
+      bucket: ${S3_BUCKET}
+      path: ${DB_CONNECTION_STRING}
+      endpoint: ${S3_ENDPOINT}
+      region: ${S3_REGION}
+      access-key-id: ${S3_ACCESS_KEY_ID}
+      secret-access-key: ${S3_SECRET_ACCESS_KEY}
       force-path-style: true
 
 addr: ":9090"
