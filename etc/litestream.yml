@@ -14,5 +14,6 @@ dbs:
       force-path-style: true
       skip-verify: true
       sign-payload: false
+      require-content-md5: false
 
 addr: ":9090"
